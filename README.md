@@ -203,7 +203,9 @@ mosquitto_sub -h localhost -t "building/+/+" -v
 
 ## 📸 Captures d'écran
 
+<img width="463" height="387" alt="image" src="https://github.com/user-attachments/assets/c5ac76a0-ed67-4841-add2-5da7046d29f1" />
 
+<img width="461" height="432" alt="image" src="https://github.com/user-attachments/assets/02e341e9-b07c-4d30-92df-0b84489ffba4" /> 
 
 ---
 
