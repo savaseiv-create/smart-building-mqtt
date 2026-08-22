@@ -209,4 +209,4 @@ mosquitto_sub -h localhost -t "building/+/+" -v
 
 ## 📄 Licence
 
-Ce projet est distribué sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+See the [`LICENSE`] file for the license and usage conditions.
