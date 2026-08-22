@@ -1,0 +1,65 @@
+# ============================================================
+#  .gitignore — smart-building-mqtt
+# ============================================================
+
+# ── Maven ────────────────────────────────────────────────────
+target/
+*.jar
+*.war
+*.ear
+*.class
+*.MF
+
+# ── Variables d'environnement et secrets ─────────────────────
+.env
+.env.*
+*.env
+secrets/
+credentials/
+
+# ── Fichiers de lock MQTT (Eclipse Paho) ─────────────────────
+*.lck
+*-tcp*/
+
+# ── Logs ─────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── IDE — IntelliJ IDEA ──────────────────────────────────────
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ── IDE — VSCode ─────────────────────────────────────────────
+.vscode/
+!.vscode/extensions.json
+
+# ── IDE — Eclipse ────────────────────────────────────────────
+.project
+.classpath
+.settings/
+bin/
+
+# ── Système d'exploitation ───────────────────────────────────
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ── Fichiers temporaires ─────────────────────────────────────
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo

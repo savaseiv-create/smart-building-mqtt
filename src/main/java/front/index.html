@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Building – Live Monitoring</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        #status {
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: green;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+        .temp { color: #e67e22; }
+        .hum  { color: #3498db; }
+        .smoke{ color: #c0392b; }
+    </style>
+</head>
+
+<body>
+
+<h1>🏢 Smart Building – Live Monitoring</h1>
+<div id="status">⏳ Connexion...</div>
+
+<div class="card">
+    <h3>Room 1</h3>
+    <p class="temp" id="temp">🌡 Température : --</p>
+    <p class="hum" id="hum">💧 Humidité : --</p>
+    <p class="smoke" id="smoke">🔥 Fumée : --</p>
+</div>
+
+<script>
+    const ws = new WebSocket("ws://localhost:8080");
+
+    ws.onopen = () => {
+        document.getElementById("status").innerText = "✅ Connecté au serveur";
+    };
+
+    ws.onmessage = (event) => {
+        const data = event.data;
+        console.log(data);
+
+        const parts = data.split("|");
+        const topic = parts[0];
+        const value = parts[1];
+
+        if (topic.includes("temperature")) {
+            document.getElementById("temp").innerText = "🌡 Température : " + value;
+        }
+
+        if (topic.includes("humidity")) {
+            document.getElementById("hum").innerText = "💧 Humidité : " + value;
+        }
+
+        if (topic.includes("smoke")) {
+            document.getElementById("smoke").innerText = "🔥 Fumée : " + value;
+        }
+    };
+
+    ws.onerror = () => {
+        document.getElementById("status").innerText = "❌ Erreur WebSocket";
+        document.getElementById("status").style.color = "red";
+    };
+</script>
+</body>
+</html>
